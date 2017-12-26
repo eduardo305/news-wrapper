@@ -1,5 +1,5 @@
 {
-  "name": "tdd",
+  "name": "news-wrapper",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -28,10 +28,14 @@
     "sinon-chai": "^2.14.0"
   },
   "scripts": {
-    "build": "webpack -w",
+    "build": "webpack",
+    "build:umd": "./node_modules/.bin/webpack --output-filename news-wrapper.umd.js",
     "dev:hot": "webpack-dev-server --hot --inline --progress --colors --watch",
     "test": "mocha tests/**/*.spec.js --require babel-register --watch"
   },
+  "files": [
+    "dist"
+  ],
   "engines": {
     "node": ">=8.9.3"
   },

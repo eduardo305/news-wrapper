@@ -2,7 +2,11 @@ const path = require('path');
 const webpack = require('webpack');
 
 const config = {
-    entry: path.resolve(__dirname, 'src/index.js'),
+    // Use this way for running the tests
+    // entry: path.resolve(__dirname, 'src/index.js'),
+
+    // Use this way when generating the UMD for browser testing
+    entry: path.resolve(__dirname, 'index.js'),
     devServer: {
         hot: true,
         inline: true,
@@ -10,9 +14,11 @@ const config = {
         historyApiFallback: true,
     },
     output: {
-        path: '/dist',
+        path: path.resolve(__dirname + 'dist'),
         filename: 'bundle.js',
-        publicPath: '/dist'
+        publicPath: '/dist',
+        libraryTarget: 'umd',
+        library: 'NewsWrapper'
     },
     module: {
         loaders: [{
