@@ -14,9 +14,7 @@ const config = {
         historyApiFallback: true,
     },
     output: {
-        path: path.resolve(__dirname + 'dist'),
-        filename: 'bundle.js',
-        publicPath: '/dist',
+        path: path.resolve(__dirname, 'dist'),
         libraryTarget: 'umd',
         library: 'NewsWrapper'
     },
