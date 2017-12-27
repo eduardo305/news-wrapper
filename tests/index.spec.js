@@ -62,14 +62,14 @@ describe('NewsWrapper library', () => {
             expect(stubbedAxios).to.have.been.calledOnce;
         });
 
-        it('should call axios.get with the url passed (plus apiKey) when NewsWrapper.get', () => {
+        it('should call axios.get with apiKey when NewsWrapper.get', () => {
             const news = new NewsWrapper({
                 token: 'foo'
             });
 
-            news.get('someUrl');
+            news.get();
 
-            expect(stubbedAxios).to.have.been.calledWith(`someUrl&apiKey=${news.token}`);
+            expect(stubbedAxios).to.have.been.calledWith(`https://newsapi.org/v2/?apiKey=${news.token}`);
         });
     });
 });

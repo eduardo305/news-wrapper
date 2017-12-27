@@ -1,6 +1,7 @@
 import React from 'react';
 
 import axios from 'axios';
+import buildUrl from 'build-url';
 
 import { API_URL } from './config/constants';
 import search from './search';
@@ -13,8 +14,14 @@ class NewsWrapper {
         this.search = search.bind(this)();
     }
 
-    get(url) {
-        return axios.get(`${url}&apiKey=${this.token}`);
+    get(path = '', params) {
+        const formattedUrl = buildUrl(`${API_URL}/${path}`, {
+            queryParams: {
+                ...params,
+                apiKey: `${this.token}`
+            }
+        });
+        return axios.get(encodeURI(`${formattedUrl}`));
     }
 }
 
