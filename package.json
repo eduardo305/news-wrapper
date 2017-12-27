@@ -1,7 +1,7 @@
 {
   "name": "news-wrapper",
   "version": "1.0.0",
-  "description": "",
+  "description": "[WIP] A Javascript library to work with API news",
   "main": "index.js",
   "dependencies": {
     "axios": "^0.17.1",
@@ -46,6 +46,12 @@
   "engines": {
     "node": ">=8.9.3"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Eduardo Silva <eduardo305@gmail.com>",
+  "license": "ISC",
+  "keywords": [
+    "TDD",
+    "js",
+    "library",
+    "NewsAPI"
+  ]
 }
