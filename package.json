@@ -1,6 +1,6 @@
 {
   "name": "news-wrapper",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "[WIP] A Javascript library to work with API news",
   "main": "index.js",
   "dependencies": {
@@ -39,7 +39,8 @@
     "build:umd:min": "./node_modules/.bin/webpack --output-filename news-wrapper.umd.min.js -p",
     "build:all": "npm run build && npm run build:umd && npm run build:umd:min",
     "dev:hot": "webpack-dev-server --hot --inline --progress --colors --watch",
-    "test": "mocha tests/**/*.spec.js --require babel-register --watch"
+    "test": "mocha tests/**/*.spec.js --require babel-register",
+    "test:tdd": "mocha tests/**/*.spec.js --require babel-register --watch"
   },
   "files": [
     "dist",
