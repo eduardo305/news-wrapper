@@ -14,7 +14,10 @@
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
+    
+    <div id="sources">
+      <select id="sources-select"></select>
+    </div>
     <div id='news'></div>
     
     <script src="../dist/news-wrapper.umd.js"></script>
@@ -22,6 +25,15 @@
     <script>
       const newsObj = new NewsWrapper({
         token: 'fb616dff3cdf4ff5a66f8689360c6fe9'
+      });
+
+      const sourcePromise = newsObj.search.sources('technology');
+      sourcePromise.then(({ data }) => {
+        const markup = data.sources.map(source => {
+          return `<option>${source.name}</option>`
+        })
+
+        document.getElementById('sources-select').innerHTML = markup;
       });
 
       const promise = newsObj.search.topheadlines('cnn');
