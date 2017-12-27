@@ -1,5 +1,8 @@
 # news-wrapper
-[WIP] A Javascript library to work with [News API]
+
+[![Build Status](https://travis-ci.org/eduardo305/news-wrapper.svg?branch=master)](https://travis-ci.org/eduardo305/news-wrapper)
+
+[WIP] A Javascript wrapper to work with [News API]
 (https://newsapi.org).
 
 ## Installation
