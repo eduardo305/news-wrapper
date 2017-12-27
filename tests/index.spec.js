@@ -6,7 +6,7 @@ import axios from 'axios';
 chai.use(sinonChai);
 
 import NewsWrapper from '../src/index';
-import { API_URL } from '../config/constants';
+import { API_URL } from '../src/config/constants';
 
 describe('NewsWrapper library', () => {
     it('should create an instance of NewsWrapper', () => {

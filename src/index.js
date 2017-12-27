@@ -2,7 +2,7 @@ import React from 'react';
 
 import axios from 'axios';
 
-import { API_URL } from '../config/constants';
+import { API_URL } from './config/constants';
 import search from './search';
 
 class NewsWrapper {

@@ -1,4 +1,4 @@
-import { API_URL } from '../config/constants';
+import { API_URL } from './config/constants';
 
 function searcher(type, query) {
     return this.get(`${API_URL}/${type}?sources=${query}`)
