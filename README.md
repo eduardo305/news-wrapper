@@ -79,7 +79,9 @@ const sources = news.search.sources('technology');
 |----------|---------|-------------------|
 |`query`   |*string* | 'Any search query'|
 
-The argument `query` is optional. In case nothing is passed, the method will retrieve all headlines available for all sources. In case more than one sourche is needed, you can add a string separated by commas, like 'cnn,techcrunch,bbc' for example.
+The argument `query` is optional. In case nothing is passed, the method will retrieve [Techcrunch](https://techcrunch.com/) available headlines. In case more than one sourche is needed, you can add a string separated by commas, like 'cnn,techcrunch,bbc' for example.
+
+Default: Techcrunch.
 
 **Example**
 

@@ -4,7 +4,7 @@ import buildUrl from 'build-url';
 function searcher(type, query = '') {
     switch(type) {
         case 'top-headlines':
-            return this.get(type, { sources: query });
+            return this.get(type, { sources: query || 'techcrunch' });
         default:
             return this.get(type, { q: query }); 
     }

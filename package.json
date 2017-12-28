@@ -1,6 +1,6 @@
 {
   "name": "news-wrapper",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "[WIP] A Javascript library to work with API news",
   "main": "index.js",
   "dependencies": {
