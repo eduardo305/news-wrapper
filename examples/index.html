@@ -27,7 +27,7 @@
         token: 'fb616dff3cdf4ff5a66f8689360c6fe9'
       });
 
-      const sourcePromise = newsObj.search.sources('technology');
+      const sourcePromise = newsObj.search.sources({ category: 'sport' });
       sourcePromise.then(({ data }) => {
         const markup = data.sources.map(source => {
           return `<option>${source.name}</option>`
@@ -36,7 +36,7 @@
         document.getElementById('sources-select').innerHTML = markup;
       });
 
-      const promise = newsObj.search.topheadlines('cnn');
+      const promise = newsObj.search.topheadlines({ sources: 'cnn', country: 'us' });
       promise.then(({ data }) => {
         const markup = data.articles.map(headline => {
           return `<div>${headline.title}</div>`;
@@ -44,6 +44,15 @@
 
         document.getElementById('news').innerHTML = markup;
       });
+
+      // const everythingPromise = newsObj.search.everything('android');
+      // everythingPromise.then(({ data }) => {
+      //   const markup = data.articles.map(headline => {
+      //     return `<div>${headline.title}</div>`;
+      //   });
+
+      //   document.getElementById('news').innerHTML = markup;
+      // })
 
     </script>
   </body>

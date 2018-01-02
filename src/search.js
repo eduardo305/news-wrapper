@@ -1,16 +1,29 @@
 import { API_URL } from './config/constants';
 import buildUrl from 'build-url';
 
-function searcher(type, query = '') {
-    switch(type) {
-        case 'top-headlines':
-            return this.get(type, { sources: query || 'techcrunch' });
-        default:
-            return this.get(type, { q: query }); 
-    }
+function searcher(type, { query = '', sources = 'techcrunch', from='', to='', category, language, country, page = 1 }) {
+    const queryParams = {};
+
+    if (query) queryParams.q = query;
+    
+    queryParams.sources = sources;
+
+    if (from) queryParams.from = from;
+
+    if (to) queryParams.to = to;
+
+    if (page) queryParams.page = page;
+    
+    if (category) queryParams.category = category;
+
+    if (language) queryParams.language = language;
+
+    if (country) queryParams.country = country;
+
+    return this.get(type, queryParams); 
 }
 
-function sourcesSearcher(type, category, country) {
+function sourcesSearcher(type, { category, country, language }) {
     const queryParams = {};
 
     if (category) {
@@ -19,6 +32,10 @@ function sourcesSearcher(type, category, country) {
 
     if (country) {
         queryParams.country = country;
+    }
+
+    if (language) {
+        queryParams.language = language
     }
 
     return this.get(type, queryParams);

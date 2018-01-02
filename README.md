@@ -24,7 +24,7 @@ const news = new NewsWrapper({
 });
 
 // using  method
-const promise = news.search.topheadlines('cnn');
+const promise = news.search.topheadlines({ sources: 'cnn'});
 promise.then(({ data }) => {
   const markup = data.articles.map(headline => {
     return `<div>${headline.title}</div>`;
@@ -62,7 +62,7 @@ const news = new NewsWrapper({
   token: 'YOUR_TOKEN_HERE'
 });
 
-const sources = news.search.sources('technology');
+const sources = news.search.sources({ category: 'technology'});
 ```
 
 ## Methods
@@ -75,18 +75,24 @@ const sources = news.search.sources('technology');
 
 **Arguments**
 
-| Argument | Type    | Options           |
-|----------|---------|-------------------|
-|`query`   |*string* | 'Any search query'|
+| Argument  | Type    | Options             |
+|-----------|---------|---------------------|
+|`query`    |*string* | 'Any search query'  |
+|`sources`  |*string* | 'Any source query'  |
+|`category` |*string* | 'Any category query'|
+|`language` |*string* | 'Any language'      |
+|`country`  |*string* | 'Any country'      |
 
-The argument `query` is optional. In case nothing is passed, the method will retrieve [Techcrunch](https://techcrunch.com/) available headlines. In case more than one sourche is needed, you can add a string separated by commas, like 'cnn,techcrunch,bbc' for example.
+The argument `query` is optional. In case nothing is passed, the method will retrieve [Techcrunch](https://techcrunch.com/) available headlines. In case more than one source is needed, you can add a string separated by commas, like 'cnn,techcrunch,bbc' for example.
 
 Default: Techcrunch.
+
+For more details about `country` and `language` supported, please check [NewsAPI](https://newsapi.org/docs/endpoints/top-headlines)
 
 **Example**
 
 ```js
-news.search.topheadlines('cnn');
+news.search.topheadlines({ sources: 'cnn'});
   .then(({ data }) => {
     // do what you want with the data
   })
@@ -95,7 +101,7 @@ news.search.topheadlines('cnn');
 If you want to specify more than one source:
 
 ```js
-news.search.topheadlines('cnn,techcrunch,bbc');
+news.search.topheadlines({ sources: 'cnn,techcrunch,bbc' });
   .then(({ data }) => {
     // do what you want with the data
   })
@@ -111,6 +117,7 @@ news.search.topheadlines('cnn,techcrunch,bbc');
 |------------|---------|------------------------|
 |`category`  |*string* | 'Any of the below list'|
 |`country`   |*string* | 'Any of the below list'|
+|`language`  |*string* | 'Any of the below list'|
 
 - Available categories: `business` `entertainment` `gaming` `general` `health-and-medical` `music` `politics` `science-and-nature` `sport` `technology`
 Default: all categories.
@@ -118,10 +125,13 @@ Default: all categories.
 - Available countries: `ar` `au` `br` `ca` `cn` `de` `es` `fr` `gb` `hk` `ie` `in` `is` `it` `nl` `no` `pk` `ru` `sa` `sv` `us` `za`
 Default: all countries.
 
+- Available languages: `ar` `en` `cn` `de` `es` `fr` `he` `it` `nl` `no` `pt` `ru` `sv` `ud`
+Default: all languages.
+
 **Example**
 
 ```js
-news.search.sources('technology', 'us')
+news.search.sources({ category: 'technology', country: 'us' })
   .then(({ data } ) => {
     // do what you want with the data
   })
@@ -133,20 +143,34 @@ news.search.sources('technology', 'us')
 
 **Arguments**
 
-| Argument | Type    | Options           |
-|----------|---------|-------------------|
-|`query`   |*string* | 'Any search query'|
+| Argument  | Type    | Options             |
+|-----------|---------|---------------------|
+|`query`    |*string* | 'Any search query'  |
+|`sources`  |*string* | 'Any source query'  |
+|`from`     |*string* | 'Starting date'     |
+|`to`       |*string* | 'Ending date'       |
+|`page`     |*int*    | 'Pagination number' |
 
+The only required parameter is query, all other parameters are optional. Both `from` and `to` needs to be in ISO 8601 format 
+(e.g. `2018-01-02` or `2018-01-02T12:16:22`)
+
+- Default page: `1`
 
 **Example**
 
 ```js
-news.search.everything('bitcoin')
+news.search.everything({ query: 'bitcoin' })
   .then(({ data }) => {
     // do what you want with the data
   })
 ```
 
+```js
+news.search.everything({ query: 'bitcoin', sources: 'cnn', from: '2017-12-23', to: '2017-12-28', page: 2 })
+  .then(({ data }) => {
+    // do what you want with the data
+  })
+```
 
 ## Contributing
 
